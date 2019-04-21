@@ -12,6 +12,10 @@ module.exports = {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   /*
+   ** Global CSS
+   */
+  css: ["tachyons/css/tachyons.css"],
+  /*
    ** Customize the progress bar color
    */
   loading: { color: "#3B8070" },

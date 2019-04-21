@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pa5">
     Hello Compta Clementine 🍊
     {{counter}}
     <button @click="increment">+</button>
