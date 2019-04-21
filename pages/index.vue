@@ -10,10 +10,15 @@
 import { mapState, mapMutations } from "vuex";
 import axios from "axios";
 export default {
-  async fetch({ store }) {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
-    store.commit("init", res.data);
+  async fetch({ store, redirect, error }) {
+    try {
+      const res = await axios.get("https://sonplaceholder.typicode.com/todos");
+      store.commit("init", res.data);
+    } catch (err) {
+      redirect("/error");
+    }
   },
+
   computed: {
     ...mapState({
       todos: state => state.todos
