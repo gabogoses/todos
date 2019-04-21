@@ -1,12 +1,10 @@
 export const state = {
-  counter: 0
+  todos: [
+    { task: "eat 🍌" },
+    { task: "code 👨‍💻" },
+    { task: "drive 🏎️" },
+    { task: "drink 🍹" }
+  ]
 };
 
-export const mutations = {
-  increment(state) {
-    state.counter++;
-  },
-  decrement(state) {
-    state.counter--;
-  }
-};
+export const mutations = {};
