@@ -1,10 +1,9 @@
 export const state = {
-  todos: [
-    { task: "eat 🍌" },
-    { task: "code 👨‍💻" },
-    { task: "drive 🏎️" },
-    { task: "drink 🍹" }
-  ]
+  todos: []
 };
 
-export const mutations = {};
+export const mutations = {
+  init(state, todos) {
+    state.todos = todos;
+  }
+};
