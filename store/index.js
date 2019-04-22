@@ -10,6 +10,12 @@ export const mutations = {
   },
   add(state, todo) {
     state.todos = [...state.todos, todo];
+  },
+  remove(state, todo) {
+    state.todos = state.todos.filter(t => t.id != todo.id);
+  },
+  toggle(state, todo) {
+    state.todos = state.todos.map(t => (t.id === todo.id ? todo : t));
   }
 };
 
@@ -20,5 +26,21 @@ export const actions = {
       { task, complete: false }
     );
     commit("add", res.data);
+  },
+  async remove({ commit }, todo) {
+    const res = await axios.delete(
+      `https://warm-crag-28544.herokuapp.com/todos/${todo.id}`
+    );
+    commit("remove", todo);
+  },
+  async toggle({ commit }, todo) {
+    const res = await axios.patch(
+      `https://warm-crag-28544.herokuapp.com/todos/${todo.id}`,
+      {
+        complete: !todo.complete
+      }
+    );
+
+    commit("toggle", res.data);
   }
 };
