@@ -1,19 +1,21 @@
 <template>
   <div>
-    <article class="pa3 pa3-ns">
-      <h1 class="f4 bold center mw7">Todos</h1>
-      <ul class="list pl0 ml0 center mw7 ba b--light-silver br3">
+    <article class="pa3">
+      <h1 class="f4 bold">Completed Todos</h1>
+      <ul class="list pl0 ml0 b--light-silver br2">
         <li
           v-for="todo of todos"
           :key="todo.id"
-          class="ph3 pv3 bb b--light-silver"
-        >{{todo.id}}{{todo.task}}</li>
+          class="flex items-center ph3 pv3 bb b--light-silver"
+        >
+          <span v-bind:class="{strike: todo.complete}" class="flex-auto">{{todo.task}}</span>
+        </li>
       </ul>
     </article>
   </div>
 </template>
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState } from "vuex";
 import { init } from "./shared";
 
 export default {
@@ -21,10 +23,8 @@ export default {
 
   computed: {
     ...mapState({
-      todos: state => state.todos
+      todos: state => state.todos.filter(todo => todo.complete)
     })
-  },
-
-  methods: {}
+  }
 };
 </script>
