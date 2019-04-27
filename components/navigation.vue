@@ -1,13 +1,11 @@
 <template>
-  <nav class="pa3">
-    <nuxt-link exact class="link dim gray f6 f5-ns dib mr3" to="/" title="Home">Home</nuxt-link>
-    <nuxt-link class="link dim gray f6 f5-ns dib mr3" to="/active" title="Active">Active</nuxt-link>
-    <nuxt-link class="link dim gray f6 f5-ns dib mr3" to="/completed" title="Completed">Completed</nuxt-link>
-  </nav>
+  <v-toolbar dark color="indigo">
+    <v-toolbar-title>My Todo</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-toolbar-items class="hidden-sm-and">
+      <v-btn flat exact to="/" nuxt>Home</v-btn>
+      <v-btn flat to="/active" nuxt>Active</v-btn>
+      <v-btn flat to="/completed" nuxt>Completed</v-btn>
+    </v-toolbar-items>
+  </v-toolbar>
 </template>
-<style scoped>
-a.nuxt-link-active {
-  color: black;
-  font-weight: bold;
-}
-</style>

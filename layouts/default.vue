@@ -1,5 +1,5 @@
 <template>
-  <div class="center mw6">
+  <div class="center mw9">
     <navigation></navigation>
     <nuxt/>
   </div>

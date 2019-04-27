@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const state = {
   todos: []
@@ -22,16 +22,16 @@ export const mutations = {
 export const actions = {
   async add({ commit }, task) {
     const res = await axios.post(
-      "https://warm-crag-28544.herokuapp.com/todos",
+      'https://warm-crag-28544.herokuapp.com/todos',
       { task, complete: false }
     );
-    commit("add", res.data);
+    commit('add', res.data);
   },
   async remove({ commit }, todo) {
     const res = await axios.delete(
       `https://warm-crag-28544.herokuapp.com/todos/${todo.id}`
     );
-    commit("remove", todo);
+    commit('remove', todo);
   },
   async toggle({ commit }, todo) {
     const res = await axios.patch(
@@ -41,6 +41,6 @@ export const actions = {
       }
     );
 
-    commit("toggle", res.data);
+    commit('toggle', res.data);
   }
 };

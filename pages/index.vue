@@ -1,27 +1,29 @@
 <template>
   <div>
     <form class="pa3" @submit.prevent="add(task)">
-      <input v-model="task" type="text">
-      <input type="submit" value="Add">
+      <v-text-field v-model="task" required type="text"></v-text-field>
+      <v-btn type="submit">Add</v-btn>
     </form>
-    <article class="pa3">
-      <h1 class="f4 bold">Todos</h1>
+    <v-list class="pa3">
       <ul class="list pl0 ml0 b--light-silver br2">
         <li
           v-for="todo of todos"
           :key="todo.id"
           class="flex items-center ph3 pv3 bb b--light-silver"
         >
-          <span v-bind:class="{strike: todo.complete}" class="flex-auto">{{todo.task}}</span>
+          <v-list-tile-content
+            v-bind:class="{strike: todo.complete}"
+            class="flex-auto"
+          >{{todo.task}}</v-list-tile-content>
           <button @click="toggle(todo)">
-            <img src="https://icon.now.sh/check" alt>
+            <v-icon>done</v-icon>
           </button>
           <button @click="remove(todo)">
-            <img src="https://icon.now.sh/trash" alt>
+            <v-icon>delete</v-icon>
           </button>
         </li>
       </ul>
-    </article>
+    </v-list>
   </div>
 </template>
 <script>
