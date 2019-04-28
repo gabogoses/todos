@@ -1,6 +1,6 @@
 <template>
-  <v-toolbar dark color="indigo">
-    <v-toolbar-title>My Todo</v-toolbar-title>
+  <v-toolbar dark color="deep-purple lighten-1">
+    <v-toolbar-title hidden-xs-only>🍊Todo</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and">
       <v-btn flat exact to="/" nuxt>Home</v-btn>
