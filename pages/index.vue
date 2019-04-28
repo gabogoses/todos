@@ -1,8 +1,24 @@
 <template>
   <div>
-    <form class="pa3" @submit.prevent="add(task)">
-      <v-text-field v-model="task" required type="text"></v-text-field>
-      <v-btn type="submit">Add</v-btn>
+    <form @submit.prevent="add(task)">
+      <v-text-field v-model="task" solo required placeholder="What are you working on?"></v-text-field>
+      <h2 class="display-1 success--text pl-3">
+        Tasks:&nbsp;
+        <v-fade-transition leave-absolute>
+          <span :key="`todos-${todos.length}`">{{ todos.length }}</span>
+        </v-fade-transition>
+      </h2>
+      <v-layout my-1 align-center>
+        <strong class="mx-3 info--text text--darken-3">Remaining: {{ remainingTasks }}</strong>
+
+        <v-divider vertical></v-divider>
+
+        <strong class="mx-3 black--text">Completed: {{ completedTasks }}</strong>
+
+        <v-spacer></v-spacer>
+
+        <v-progress-circular :value="progress" class="mr-2"></v-progress-circular>
+      </v-layout>
     </form>
     <v-list class="pa3">
       <ul class="list pl0 ml0 b--light-silver br2">
@@ -15,12 +31,12 @@
             v-bind:class="{strike: todo.complete}"
             class="flex-auto"
           >{{todo.task}}</v-list-tile-content>
-          <button @click="toggle(todo)">
+          <v-btn flat icon color="pink" @click="toggle(todo)">
             <v-icon>done</v-icon>
-          </button>
-          <button @click="remove(todo)">
+          </v-btn>
+          <v-btn flat icon color="deep-orange" @click="remove(todo)">
             <v-icon>delete</v-icon>
-          </button>
+          </v-btn>
         </li>
       </ul>
     </v-list>
@@ -35,14 +51,23 @@ export default {
 
   data() {
     return {
-      task: "task"
+      task: ""
     };
   },
 
   computed: {
     ...mapState({
       todos: state => state.todos
-    })
+    }),
+    completedTasks() {
+      return this.todos.filter(todo => todo.complete).length;
+    },
+    progress() {
+      return (this.completedTasks / this.todos.length) * 100;
+    },
+    remainingTasks() {
+      return this.todos.length - this.completedTasks;
+    }
   },
 
   methods: {
