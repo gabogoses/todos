@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="add(task)">
-      <v-text-field v-model="task" solo required placeholder="What are you working on?"></v-text-field>
+      <v-text-field v-model="task" clearable solo required placeholder="What are you working on?"></v-text-field>
       <h2 class="display-1 green--text pl-3">
         Tasks:&nbsp;
         <v-fade-transition leave-absolute>

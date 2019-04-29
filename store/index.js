@@ -40,7 +40,6 @@ export const actions = {
         complete: !todo.complete
       }
     );
-
     commit('toggle', res.data);
   }
 };
